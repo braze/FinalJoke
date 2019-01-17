@@ -9,6 +9,10 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.robolectric.annotation.Config;
 
+import static org.hamcrest.Matchers.isEmptyString;
+import static org.hamcrest.core.IsNot.not;
+import static org.junit.Assert.assertThat;
+
 @Config(manifest = Config.NONE)
 @RunWith(MockitoJUnitRunner.class)
 public class EndpointsAsyncTaskTest {
@@ -29,6 +33,8 @@ public class EndpointsAsyncTaskTest {
             @Override
             public void getResult(String result) {
                 Truth.assertThat(result.equals(correctResult)).isTrue();
+                assertThat(result, not(isEmptyString()));
+
             }
 
         });

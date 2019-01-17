@@ -16,7 +16,11 @@ public class AndroidLibActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_lib);
 
-        String jokeArgument = getIntent().getExtras().getString(JOKE_INTENT_KEY);
+        String jokeArgument  = "";
+        Intent intent = getIntent();
+        if (intent.hasExtra(JOKE_INTENT_KEY)) {
+            jokeArgument = intent.getExtras().getString(JOKE_INTENT_KEY);
+        }
 
         if (jokeArgument == null || jokeArgument.isEmpty()) finish();
         else {
